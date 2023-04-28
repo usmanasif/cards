@@ -1,0 +1,33 @@
+<%= form_with model: task do |form| %>
+  <% if task.errors.any? %>
+    <% task.errors.full_messages.each do |message|%>
+      <% flash[:error] = message %>
+      <%= render 'layouts/flash', locals: {flash: flash} %>
+    <%end%>
+  <%end%>
+  <div class='my-6 flex flex-row justify-between gap-4 items-end'>
+    <div class='w-1/4'>
+      <%= form.label :name, 'Title', class: 'block font-bold mr-5 mb-2 text-sm text-gray-900' %>
+      <%= form.text_field :name, class: 'mr-5 input-field', autofocus: true %>
+    </div>
+
+    <div class='w-1/4'>
+      <%= form.label :user_id, class: 'block font-bold mr-5 mb-2 text-sm text-gray-900' %>
+      <%= form.collection_select(:user_id, User.team_mate, :id, :first_name, { prompt: true }, class: 'mr-5 dropdown-select') %>
+    </div>
+
+    <div class='w-1/2'>
+      <%= form.label :description, class: 'block font-bold mr-5 mb-2 text-sm text-gray-900' %>
+      <%= form.text_field :description, class: 'mr-2 input-field', required: true %>
+    </div>
+
+    <div class='w-1/6 h-11 flex flex-row justify-end items-end'>
+      <%= link_to tasks_path, class: 'btn-danger' do %>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      <% end %>
+      <%= button_tag class: 'btn-primary' do %>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+      <% end %>
+    </div>
+  </div>
+<% end %>

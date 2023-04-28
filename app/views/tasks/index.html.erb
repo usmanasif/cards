@@ -1,0 +1,33 @@
+<div class='container p-4 rounded-md border'>
+  <div class='flex flex-row justify-between mb-10'>
+    <h1 class='text-lg font-bold tracking-tight text-blue-dark'> Tasks </h1>
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to new_task_path, class: 'btn-main', data: { turbo_frame: dom_id(Task.new) } do %>
+        <div class='flex flex-row items-center pr-2'>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+          <p>Create Task</p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= turbo_frame_tag Task.new %>
+  <%= turbo_frame_tag 'tasks', class: 'flex flex-col justify-start' do %>
+    <div class='flex flex-row justify-between bg-slate-50 border-b hover:bg-gray-50'>
+      <div class='w-1/4 py-4 px-6 whitespace-nowrap'>
+        <p class='text-left font-medium text-sm text-gray-900'>Description</p>
+      </div>
+      <div class='w-1/5 py-4 px-6 whitespace-nowrap'>
+        <p class='text-left font-medium text-sm text-gray-900'>Created At</p>
+      </div>
+      <div class='w-1/5 py-4 px-6 whitespace-nowrap'>
+        <p class='text-left font-medium text-sm text-gray-900'>Assignee</p>
+      </div>
+      <div class='w-1/5 py-4 px-6 whitespace-nowrap'>
+        <p class='text-left font-medium text-sm text-gray-900'>Task Status</p>
+      </div>
+      <div class='w-1/6 py-4 px-6'>
+      </div>
+    </div>
+    <%= render @tasks %>
+  <% end %>
+</div>

@@ -2,12 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
+  .btn-main {
+    @apply text-white bg-indigo-500 focus:ring-4 focus:ring-purple-300 font-semibold rounded-lg text-base px-5 py-1.5 mr-2 focus:outline-none;
+  }
+
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none;
+  }
+
+  .btn-success {
+    @apply focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2;
+  }
+
+  .btn-danger {
+    @apply focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2;
+  }
+
+  .card-btn {
+    @apply inline-flex items-center px-3 py-2 text-sm font-medium text-center rounded-lg text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300;
+  }
+
+  .input-field{
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+  }
+
+  .dropdown-select {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+  }
+
+  .user-form--field-width {
+    flex-basis: 16% !important
+  }
+
+  .first_col {
+    flex: 0 0 300px
   }
 }
-
-*/

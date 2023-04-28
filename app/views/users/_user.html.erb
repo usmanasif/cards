@@ -1,0 +1,13 @@
+<%= turbo_frame_tag user do %>
+  <div class='flex flex-row justify-between bg-white border-b hover:bg-gray-50'>
+    <div class='w-1/3 py-4 px-6 text-left whitespace-nowrap'>
+      <p class='font-normal text-sm text-slate-600'><%= user.first_name + " " + user.last_name %></p>
+    </div>
+    <div class='w-1/3 py-4 px-6 text-left whitespace-nowrap'>
+      <p class='font-normal text-sm text-slate-600'><%= user.email %></p>
+    </div>
+    <div class='w-1/3 py-4 px-6 text-left whitespace-nowrap'>
+      <p class='font-normal text-sm text-slate-600'><%= user.created_at.to_formatted_s(:short) %></p>
+    </div>
+  </div>
+<% end %>

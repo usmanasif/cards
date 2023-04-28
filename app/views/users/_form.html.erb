@@ -1,0 +1,43 @@
+<%= form_with model: user do |form| %>
+  <% if user.errors.any? %>
+    <% user.errors.full_messages.each do |message|%>
+      <% flash[:error] = message %>
+      <%= render 'layouts/flash', locals: {flash: flash} %>
+    <%end%>
+  <%end%>
+  <div class='mb-6 flex flex-row justify-between gap-4 items-end'>
+    <div class='w-1/6'>
+      <%= form.label :first_name, class: 'block font-bold mr-5 mb-2 text-sm text-gray-900' %>
+      <%= form.text_field :first_name, class: 'mr-5 input-field', autofocus: true %>
+    </div>
+
+    <div class='w-1/6'>
+      <%= form.label :last_name, class: 'block font-bold mr-5 mb-2 text-sm text-gray-900' %>
+      <%= form.text_field :last_name, class: 'mr-5 input-field'%>
+    </div>
+
+    <div class='w-1/7'>
+      <%= form.label :role, class: 'block font-bold mr-5 mb-2 text-sm text-gray-900' %>
+      <%= form.select :role, [['Admin', 0], ['User', 1]], { prompt: true }, class: 'mr-5 dropdown-select' %>
+    </div>
+
+    <div class='w-1/5'>
+      <%= form.label :email, class: 'block font-bold mr-5 mb-2 text-sm text-gray-900' %>
+      <%= form.email_field :email, class: 'mr-5 input-field'%>
+    </div>
+
+    <div class='w-1/5'>
+      <%= form.label :password, class: 'block font-bold mr-5 mb-2 text-sm text-gray-900' %>
+      <%= form.password_field :password, class: 'mr-5 input-field'%>
+    </div>
+
+    <div class='w-1/7 h-11 flex flex-row justify-end items-end'>
+      <%= link_to users_path, class: 'btn-danger' do %>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      <% end %>
+      <%= button_tag(class: 'btn-primary') do %>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+      <% end %>
+    </div>
+  </div>
+<% end %>
